@@ -276,6 +276,23 @@
 			</section>
 		</footer>
 
+		<script>
+			document.getElementById("contactForm").addEventListener("submit", function (event) {
+				event.preventDefault(); // Prevent the form from submitting normally
+
+				// Get the message, name, and email from the form fields
+				var message = document.getElementById("message").value;
+				var name = document.getElementById("name").value;
+				var email = document.getElementById("email").value;
+
+				// Construct the mailto link with the recipient email address, subject, and body
+				var mailtoLink = "mailto:muhabee62@gmail.com?subject=Message from " + encodeURIComponent(name) + " (" + encodeURIComponent(email) + ")&body=" + encodeURIComponent(message);
+
+				// Open the default email client with the mailto link
+				window.location.href = mailtoLink;
+			});
+		</script>
+					
 		<!-- Copyright -->
 		<div id="copyright">
 			<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
