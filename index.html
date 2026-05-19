@@ -1,314 +1,1093 @@
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html lang="en">
 <head>
-	<title>Muhammad Bello Adamu</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<style>
-		/* Adjust the background image for the entire body */
-		body {
-			/* Add any other styles for the body here */
-			margin: 0; /* Remove default margin */
-			padding: 0; /* Remove default padding */
-		}
-		/* Additional styles for the intro section if needed */
-		#intro {
-			background-color: transparent; /* Set background color to transparent */
-			color: black; /* Make sure text is readable */
-			text-align: center; /* Center the text */
-			padding: 100px; /* Add padding to space out the content */
-		}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muhammad Bello Adamu | AI Researcher & Data Analyst</title>
+  <meta name="description" content="Portfolio of Muhammad Bello Adamu — AI Researcher, Data Analyst, GIS Specialist. Wolverhampton, UK." />
 
-			#intro .image.main {
-				position: absolute; /* Position the image absolutely */
-				top: 0;
-				left: 0;
-				width: 100%; /* Ensure the image covers the entire width */
-				height: 100%; /* Ensure the image covers the entire height */
-				z-index: -1; /* Send the image to the background */
-			}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-				#intro .image.main img {
-					object-fit: cover; /* Ensure the entire image is visible */
-					width: 100%; /* Ensure the image covers the entire width */
-					height: 100%; /* Ensure the image covers the entire height */
-				}
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 
-			#intro h1 {
-				font-size: 72px; /* Increase the font size of the heading */
-				color: deepskyblue; /* Set text color to black */
-				font-weight: bold; /* Set text to bold */
-				margin-bottom: 2px; /* Add some spacing below the heading */
-			}
+  <style>
+    /* ═══════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════ */
+    :root {
+      --bg:          #07080f;
+      --bg2:         #0d1020;
+      --glass:       rgba(255,255,255,0.04);
+      --glass-hover: rgba(255,255,255,0.07);
+      --glass-bd:    rgba(255,255,255,0.08);
+      --glass-bd-hi: rgba(79,195,247,0.35);
+      --blue:        #4FC3F7;
+      --teal:        #00E5D1;
+      --purple:      #B39DDB;
+      --green:       #81C784;
+      --amber:       #FFB74D;
+      --pink:        #F06292;
+      --text:        #E8EAF6;
+      --muted:       rgba(232,234,246,0.50);
+      --ff-head:     'Cormorant Garamond', Georgia, serif;
+      --ff-body:     'Outfit', sans-serif;
+      --ff-mono:     'Space Mono', monospace;
+      --r:           10px;
+      --r-sm:        6px;
+      --r-pill:      100px;
+    }
 
-			#intro p {
-				font-size: 24px; /* Increase the font size of the paragraph */
-				color: deepskyblue; /* Set text color to black */
-				font-weight: bold; /* Set text to bold */
-				margin-bottom: 20px; /* Add some spacing below the paragraph */
-			}
+    /* ═══════════════════════════════════════
+       RESET
+    ═══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font-family: var(--ff-body); cursor: pointer; border: none; }
 
-			#intro a {
-				font-weight: bold; /* Set link text to bold */
-				color: black; /* Set link color to black */
-			}
-	</style>
+    /* ═══════════════════════════════════════
+       AMBIENT BACKGROUND
+    ═══════════════════════════════════════ */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 55% at 15% -5%,  rgba(79,195,247,0.07)  0%, transparent 60%),
+        radial-gradient(ellipse 55% 40% at 85% 90%,  rgba(0,229,209,0.055)  0%, transparent 55%),
+        radial-gradient(ellipse 45% 35% at 60% 40%,  rgba(179,157,219,0.04) 0%, transparent 50%);
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+
+    /* ═══════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 5rem;
+      backdrop-filter: blur(22px) saturate(140%);
+      background: rgba(7,8,15,0.72);
+      border-bottom: 1px solid var(--glass-bd);
+      transition: padding 0.3s;
+    }
+    .nav-logo {
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      color: var(--blue);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-social { display: flex; gap: 1.1rem; }
+    .nav-social a { color: var(--muted); font-size: 0.95rem; transition: color 0.2s; }
+    .nav-social a:hover { color: var(--teal); }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    #hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+    }
+    .hero-eyebrow {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem; color: var(--teal);
+      letter-spacing: 0.32em; text-transform: uppercase;
+      margin-bottom: 1.6rem;
+      opacity: 0; animation: fadeUp 0.9s 0.2s ease forwards;
+    }
+    .hero-name {
+      font-family: var(--ff-head);
+      font-size: clamp(3.4rem, 8vw, 7.5rem);
+      font-weight: 300; line-height: 1.0;
+      color: var(--text); margin-bottom: 1rem;
+      opacity: 0; animation: fadeUp 0.9s 0.38s ease forwards;
+    }
+    .hero-name em { color: var(--blue); font-style: italic; font-weight: 600; }
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 1.8vw, 1.08rem);
+      color: var(--muted); line-height: 1.8;
+      max-width: 560px; margin-bottom: 2.8rem;
+      opacity: 0; animation: fadeUp 0.9s 0.56s ease forwards;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      opacity: 0; animation: fadeUp 0.9s 0.72s ease forwards;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.8rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: var(--muted); font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+      opacity: 0; animation: fadeIn 1s 1.6s forwards;
+    }
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--blue), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+
+    /* ═══════════════════════════════════════
+       BUTTONS
+    ═══════════════════════════════════════ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0.82rem 1.9rem; border-radius: var(--r-sm);
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+    .btn-primary {
+      background: var(--blue); color: var(--bg);
+      box-shadow: 0 4px 20px rgba(79,195,247,0.2);
+    }
+    .btn-primary:hover {
+      background: var(--teal);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,229,209,0.3);
+    }
+    .btn-ghost {
+      background: var(--glass); color: var(--text);
+      border: 1px solid var(--glass-bd);
+    }
+    .btn-ghost:hover {
+      border-color: var(--blue); color: var(--blue);
+      background: rgba(79,195,247,0.05);
+      transform: translateY(-2px);
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION WRAPPER
+    ═══════════════════════════════════════ */
+    .section-wrap {
+      position: relative; z-index: 1;
+      max-width: 1160px; margin: 0 auto;
+      padding: 7rem 4rem;
+    }
+    .section-label {
+      font-family: var(--ff-mono);
+      font-size: 0.68rem; color: var(--teal);
+      letter-spacing: 0.32em; text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .section-title {
+      font-family: var(--ff-head);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300; line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+    .section-title em { font-style: italic; color: var(--blue); }
+
+    /* ═══════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════ */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+    .about-body p {
+      color: var(--muted); line-height: 1.95; font-size: 1.02rem; margin-bottom: 1.4rem;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+    }
+    .stat-card {
+      background: var(--glass); border: 1px solid var(--glass-bd);
+      border-radius: var(--r); padding: 1.5rem 1.6rem;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .stat-card:hover { border-color: var(--glass-bd-hi); background: var(--glass-hover); }
+    .stat-num {
+      font-family: var(--ff-head); font-size: 2.4rem; font-weight: 600; color: var(--blue);
+    }
+    .stat-lbl { font-size: 0.77rem; color: var(--muted); margin-top: 0.3rem; letter-spacing: 0.04em; }
+
+    /* ═══════════════════════════════════════
+       SKILLS
+    ═══════════════════════════════════════ */
+    .skills-cloud { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+    .skill-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.48rem 1.05rem;
+      background: var(--glass); border: 1px solid var(--glass-bd);
+      border-radius: var(--r-pill);
+      font-size: 0.81rem; color: var(--muted);
+      backdrop-filter: blur(10px);
+      transition: all 0.2s;
+    }
+    .skill-pill:hover { border-color: var(--blue); color: var(--blue); background: rgba(79,195,247,0.05); }
+    .skill-pill i { font-size: 0.72rem; }
+
+    /* ═══════════════════════════════════════
+       FILTER TABS
+    ═══════════════════════════════════════ */
+    .filter-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.8rem; }
+    .filter-btn {
+      padding: 0.48rem 1.15rem;
+      background: var(--glass); border: 1px solid var(--glass-bd);
+      border-radius: var(--r-pill);
+      font-size: 0.78rem; letter-spacing: 0.05em; color: var(--muted);
+      backdrop-filter: blur(10px);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: rgba(79,195,247,0.1);
+      border-color: var(--blue); color: var(--blue);
+    }
+
+    /* ═══════════════════════════════════════
+       PROJECT GRID
+    ═══════════════════════════════════════ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.4rem;
+    }
+
+    /* Project Card */
+    .pcard {
+      display: flex; flex-direction: column;
+      background: var(--glass); border: 1px solid var(--glass-bd);
+      border-radius: var(--r); overflow: hidden;
+      cursor: pointer;
+      backdrop-filter: blur(14px);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1),
+                  border-color 0.3s, box-shadow 0.3s;
+    }
+    .pcard:hover {
+      transform: translateY(-7px);
+      border-color: rgba(79,195,247,0.28);
+      box-shadow: 0 22px 55px rgba(0,0,0,0.45), 0 0 0 1px rgba(79,195,247,0.09);
+    }
+
+    /* Featured card spans full width */
+    .pcard.featured { grid-column: 1 / -1; flex-direction: row; }
+    .pcard.featured .pthumb { width: 340px; min-width: 340px; height: auto; }
+    .pcard.featured .pbody { padding: 2.2rem 2.6rem; }
+    .pcard.featured .ptitle { font-size: 1.75rem; }
+    .pcard.featured .pdesc { font-size: 0.95rem; }
+
+    .pthumb {
+      height: 175px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pthumb-icon { font-size: 2.8rem; position: relative; z-index: 1; }
+    /* Shimmer overlay on hover */
+    .pthumb::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .pcard:hover .pthumb::after { opacity: 1; }
+
+    .pbody { padding: 1.4rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+    .feat-badge {
+      font-family: var(--ff-mono); font-size: 0.65rem; color: var(--blue);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;
+    }
+    .feat-badge::before { content: ''; display: block; width: 18px; height: 1px; background: var(--blue); }
+
+    .ptags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .ptag {
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: var(--r-pill);
+    }
+    .t-ai     { background: rgba(179,157,219,0.14); color: #C5B8E8; border: 1px solid rgba(179,157,219,0.22); }
+    .t-ml     { background: rgba(79,195,247,0.11);  color: var(--blue); border: 1px solid rgba(79,195,247,0.2); }
+    .t-data   { background: rgba(0,229,209,0.09);   color: var(--teal); border: 1px solid rgba(0,229,209,0.18); }
+    .t-gis    { background: rgba(129,199,132,0.11); color: var(--green); border: 1px solid rgba(129,199,132,0.2); }
+    .t-nlp    { background: rgba(255,183,77,0.11);  color: var(--amber); border: 1px solid rgba(255,183,77,0.2); }
+    .t-pm     { background: rgba(240,98,146,0.09);  color: var(--pink);  border: 1px solid rgba(240,98,146,0.18); }
+    .t-dev    { background: rgba(129,212,250,0.09); color: #81D4FA; border: 1px solid rgba(129,212,250,0.18); }
+    .t-cv     { background: rgba(255,213,79,0.09);  color: #FFD54F; border: 1px solid rgba(255,213,79,0.18); }
+    .t-res    { background: rgba(165,214,167,0.09); color: #A5D6A7; border: 1px solid rgba(165,214,167,0.18); }
+
+    .ptitle {
+      font-family: var(--ff-head); font-size: 1.28rem; font-weight: 500;
+      line-height: 1.3; color: var(--text); margin-bottom: 0.55rem;
+    }
+    .pdesc { font-size: 0.85rem; color: var(--muted); line-height: 1.75; flex: 1; }
+
+    .pfoot {
+      padding: 0.9rem 1.6rem;
+      border-top: 1px solid var(--glass-bd);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .pmore {
+      font-size: 0.78rem; color: var(--blue); font-weight: 500;
+      letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.35rem;
+    }
+    .parrow { transition: transform 0.2s; display: inline-block; }
+    .pcard:hover .parrow { transform: translateX(5px); }
+
+    /* ═══════════════════════════════════════
+       MODAL
+    ═══════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 900;
+      background: rgba(7,8,15,0.82);
+      backdrop-filter: blur(10px);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      position: fixed; top: 0; right: 0; bottom: 0; z-index: 901;
+      width: min(700px, 100vw);
+      background: #0c1020;
+      border-left: 1px solid var(--glass-bd);
+      overflow-y: auto;
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.42s cubic-bezier(0.4,0,0.2,1);
+    }
+    .modal.open { transform: translateX(0); }
+
+    .modal-topbar {
+      position: sticky; top: 0; z-index: 5;
+      background: #0c1020;
+      border-bottom: 1px solid var(--glass-bd);
+      padding: 1.2rem 2.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .modal-breadcrumb {
+      font-family: var(--ff-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em;
+    }
+    .modal-breadcrumb span { color: var(--blue); }
+    .modal-close-btn {
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--glass); border: 1px solid var(--glass-bd);
+      color: var(--muted); font-size: 0.9rem;
+      transition: all 0.2s; cursor: pointer;
+    }
+    .modal-close-btn:hover { background: rgba(79,195,247,0.1); border-color: var(--blue); color: var(--blue); }
+
+    .modal-hero {
+      height: 240px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-hero-icon { font-size: 4.5rem; position: relative; z-index: 1; }
+    .modal-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, #0c1020 100%);
+    }
+
+    .modal-content { padding: 2rem 2.4rem; flex: 1; }
+    .modal-mtags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
+    .modal-title {
+      font-family: var(--ff-head); font-size: 1.9rem; font-weight: 500;
+      line-height: 1.2; color: var(--text); margin-bottom: 1.6rem;
+    }
+    .modal-sec {
+      font-family: var(--ff-mono); font-size: 0.65rem; color: var(--teal);
+      letter-spacing: 0.28em; text-transform: uppercase;
+      margin-bottom: 0.7rem; margin-top: 2rem;
+    }
+    .modal-overview {
+      color: var(--muted); line-height: 1.9; font-size: 0.93rem;
+    }
+    .modal-highlights { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-top: 0.2rem; }
+    .modal-highlights li {
+      display: flex; gap: 0.8rem; align-items: flex-start;
+      color: var(--muted); font-size: 0.88rem; line-height: 1.65;
+    }
+    .modal-highlights li::before { content: '→'; color: var(--blue); flex-shrink: 0; margin-top: 0.1rem; }
+    .modal-tech-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.2rem; }
+    .tech-chip {
+      padding: 0.32rem 0.85rem;
+      background: var(--glass); border: 1px solid var(--glass-bd); border-radius: 4px;
+      font-family: var(--ff-mono); font-size: 0.72rem; color: var(--blue);
+    }
+
+    .modal-foot {
+      padding: 1.4rem 2.4rem;
+      border-top: 1px solid var(--glass-bd);
+      position: sticky; bottom: 0; background: #0c1020;
+    }
+    .gh-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+      padding: 0.92rem 2rem; width: 100%;
+      background: var(--glass); border: 1px solid var(--glass-bd);
+      border-radius: var(--r-sm); color: var(--text);
+      font-size: 0.88rem; font-weight: 500;
+      transition: all 0.25s;
+    }
+    .gh-btn:hover {
+      background: rgba(79,195,247,0.07); border-color: var(--blue); color: var(--blue);
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .gh-btn .fa-external-link-alt { font-size: 0.72rem; margin-left: auto; }
+
+    /* ═══════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════ */
+    #contact { max-width: 700px; text-align: center; margin: 0 auto; }
+    .contact-intro { color: var(--muted); font-size: 1rem; line-height: 1.85; margin-bottom: 3rem; }
+    .cform { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fld { display: flex; flex-direction: column; gap: 0.38rem; }
+    .fld label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.09em; text-transform: uppercase; }
+    .fld input, .fld textarea {
+      background: var(--glass); border: 1px solid var(--glass-bd);
+      border-radius: var(--r-sm); padding: 0.8rem 1.05rem;
+      color: var(--text); font-family: var(--ff-body); font-size: 0.88rem;
+      transition: border-color 0.2s; resize: vertical;
+    }
+    .fld input:focus, .fld textarea:focus { outline: none; border-color: var(--blue); }
+    .fld textarea { min-height: 115px; }
+    .clinks { display: flex; gap: 1.6rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; }
+    .clink {
+      display: flex; align-items: center; gap: 0.55rem;
+      color: var(--muted); font-size: 0.84rem;
+      transition: color 0.2s;
+    }
+    .clink:hover { color: var(--blue); }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--glass-bd);
+      padding: 1.8rem 2rem; text-align: center;
+      font-family: var(--ff-mono); font-size: 0.75rem; color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ═══════════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════════ */
+    .rev {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .rev.vis { opacity: 1; transform: translateY(0); }
+
+    /* ═══════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%      { opacity: 1;    transform: scaleY(1.12); }
+    }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      .section-wrap { padding: 5rem 2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .pcard.featured { flex-direction: column; }
+      .pcard.featured .pthumb { width: 100%; height: 175px; min-width: unset; }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .modal { width: 100vw; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .clinks { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
-<body class="is-preload">
 
-	<!-- Wrapper -->
-	<div id="wrapper" class="fade-in">
+<body>
 
-		<!-- Intro -->
-		<div id="intro">
-			<div class="image main">
-				<img src="images/IMG-20220202-WA0001.jpg" alt="Background Image">
-			</div>
-			<h1>MUHAMMAD BELLO ADAMU<br /></h1>
-			<p>Artificial Intelligence Researcher, Data Analyst, Remote Sensing Analyst, and GIS Personnel <a href="https://www.linkedin.com/in/muhammad-bello-adamu-b3574b238">@AnalysisWithBello</a> .</p>
-			<!-- Add spaces -->
-			<br><br><br>
-			<!-- Add Swipe Down text -->
-			<p><b><i style="color: black;">Swipe Down</i></b></p>
-			<ul class="actions">
-				<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-			</ul>
-		</div>
+<!-- ═══════ NAVIGATION ═══════ -->
+<nav>
+  <span class="nav-logo">MBA · Portfolio</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://www.linkedin.com/in/muhammad-bello-adamu-b3574b238" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/muhabee62" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+  </div>
+</nav>
 
-		<!-- Header -->
-		<header id="header">
-			<a href="index.html" class="logo">Analysis_With_Bello</a>
-		</header>
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <p class="hero-eyebrow">Azure Architect - Data &amp; AI</p>
+  <h1 class="hero-name">Bello<br><em>Muhammad Adamu</em></h1>
+  <p class="hero-subtitle">
+    Bridging the gap between raw data and real decisions — through machine learning,
+    geospatial intelligence, and deep learning systems.
+  </p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-primary"><i class="fas fa-layer-group"></i> View My Work</a>
+    <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> Get in Touch</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
 
-		<!-- Nav -->
-		<nav id="nav">
-			<ul class="links">
-				<li class="active"><a href="index.html">Analysis_With_Bello</a></li>
+<!-- ═══════ ABOUT ═══════ -->
+<div class="section-wrap" id="about">
+  <div class="about-grid">
+    <div class="about-body rev">
+      <p class="section-label">Who I Am</p>
+      <h2 class="section-title">Turning complex data<br>into <em>clear insight</em></h2>
+      <p>
+        I'm an Azure Architect specializing in Data & AI, based in
+        Wolverhampton, UK. My work spans the full spectrum of data science —
+        from training deep learning models to mapping the earth's surface
+        with GIS technology.
+      </p>
+      <p>
+        I combine academic rigour with practical application, delivering
+        projects that communicate findings clearly to both technical and
+        non-technical audiences alike.
+      </p>
+      <div style="margin-top:2.2rem">
+        <a href="#projects" class="btn btn-ghost">Explore my work →</a>
+      </div>
+    </div>
+    <div class="about-stats rev" style="transition-delay:0.15s">
+      <div class="stat-card">
+        <div class="stat-num">14+</div>
+        <div class="stat-lbl">Projects Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-lbl">Domains Covered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">Data &amp; AI</div>
+        <div class="stat-lbl">Research Focus</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">GIS</div>
+        <div class="stat-lbl">Geospatial Expertise</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-			</ul>
-			<ul class="icons">
-				<li><a href="https://www.linkedin.com/in/muhammad-bello-adamu-b3574b238" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-				<li><a href="https://github.com/muhabee62" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-			</ul>
-		</nav>
+<!-- ═══════ SKILLS ═══════ -->
+<div class="section-wrap" style="padding-top:0" id="skills">
+  <p class="section-label rev">Technical Stack</p>
+  <div class="skills-cloud rev" style="transition-delay:0.1s">
+    <span class="skill-pill"><i class="fab fa-python"></i> Python</span>
+    <span class="skill-pill"><i class="fas fa-brain"></i> TensorFlow / Keras</span>
+    <span class="skill-pill"><i class="fas fa-chart-scatter"></i> Scikit-Learn</span>
+    <span class="skill-pill"><i class="fas fa-code"></i> R</span>
+    <span class="skill-pill"><i class="fas fa-map-marked-alt"></i> GIS / ArcGIS / QGIS</span>
+    <span class="skill-pill"><i class="fas fa-satellite"></i> Remote Sensing</span>
+    <span class="skill-pill"><i class="fas fa-database"></i> Data Mining</span>
+    <span class="skill-pill"><i class="fas fa-network-wired"></i> Deep Learning</span>
+    <span class="skill-pill"><i class="fas fa-eye"></i> Computer Vision</span>
+    <span class="skill-pill"><i class="fas fa-comment-dots"></i> NLP</span>
+    <span class="skill-pill"><i class="fas fa-cube"></i> Unity</span>
+    <span class="skill-pill"><i class="fas fa-tasks"></i> Project Management</span>
+    <span class="skill-pill"><i class="fab fa-js"></i> HTML / CSS / JS</span>
+  </div>
+</div>
 
-		<!-- Main -->
-		<div id="main">
+<!-- ═══════ PROJECTS ═══════ -->
+<div class="section-wrap" style="padding-top:0" id="projects">
+  <p class="section-label rev">Portfolio</p>
+  <h2 class="section-title rev">Selected <em>Projects</em></h2>
 
-			<!-- Featured Post -->
-			<article class="post featured">
-				<header class="major">
+  <div class="filter-row rev" style="transition-delay:0.08s">
+    <button class="filter-btn active" data-f="all">All Projects</button>
+    <button class="filter-btn" data-f="ai">AI &amp; Deep Learning</button>
+    <button class="filter-btn" data-f="data">Data Analysis</button>
+    <button class="filter-btn" data-f="gis">GIS &amp; Remote Sensing</button>
+    <button class="filter-btn" data-f="nlp">NLP</button>
+    <button class="filter-btn" data-f="other">Other</button>
+  </div>
 
-					<h2>
-						<a href="https://github.com/muhabee62/Machine-Learning/blob/main/Artificial%20Intelligence%20Project.pdf">
-							Automated Fault Detection <br />
-							Project
-						</a>
-					</h2>
-					<p>
-						This is a proposed work which would use deep-machine learning <br />
-						to automate the detection of geological faults in seismic data.
-					</p>
-				</header>
-				<a href="https://github.com/muhabee62/Machine-Learning/blob/main/Artificial%20Intelligence%20Project.pdf" class="image main"><img src="images/fault.jpg" alt="" /></a>
-				<ul class="actions special">
-					<li><a href="https://github.com/muhabee62/Machine-Learning/blob/main/Artificial%20Intelligence%20Project.pdf" class="button large">View Project</a></li>
-				</ul>
-			</article>
+  <div class="projects-grid" id="pGrid"></div>
+</div>
 
-			<!-- Posts -->
-			<section class="posts">
-				<article>
-					<header>
+<!-- ═══════ CONTACT ═══════ -->
+<div class="section-wrap" id="contact">
+  <p class="section-label rev" style="text-align:center">Let's Connect</p>
+  <h2 class="section-title rev" style="text-align:center">Get in <em>Touch</em></h2>
+  <p class="contact-intro rev" style="transition-delay:0.1s">
+    Have a project in mind, a question about my work, or just want to connect?
+    I'd love to hear from you.
+  </p>
+  <form class="cform rev" id="cform" style="transition-delay:0.15s">
+    <div class="form-row">
+      <div class="fld">
+        <label for="cname">Your Name</label>
+        <input type="text" id="cname" name="name" placeholder="Jane Smith" />
+      </div>
+      <div class="fld">
+        <label for="cemail">Email Address</label>
+        <input type="email" id="cemail" name="email" placeholder="jane@example.com" />
+      </div>
+    </div>
+    <div class="fld">
+      <label for="cmsg">Message</label>
+      <textarea id="cmsg" name="message" placeholder="Tell me about your project or question…"></textarea>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </button>
+    </div>
+  </form>
+  <div class="clinks rev" style="transition-delay:0.2s">
+    <a href="mailto:muhammadbello62@gmail.com" class="clink"><i class="fas fa-envelope"></i> muhammadbello62@gmail.com</a>
+    <a href="tel:+447476377531" class="clink"><i class="fas fa-phone"></i> (+44) 7476 377531</a>
+    <a href="https://www.linkedin.com/in/muhammad-bello-adamu-b3574b238" target="_blank" class="clink"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/muhabee62" target="_blank" class="clink"><i class="fab fa-github"></i> GitHub</a>
+  </div>
+</div>
 
-						<h2>
-							<a href="https://github.com/muhabee62/G.I.S-Analysis">
-								Geographic Information Systems<br />
-								(GIS) Project
-							</a>
-						</h2>
-					</header>
-					<a href="https://github.com/muhabee62/G.I.S-Analysis" class="image fit"><img src="images/geospatial.jpg" alt="" /></a>
-					<p>This is a project that applied the science of GIS in cadastral mapping</p>
-					<ul class="actions special">
-						<li><a href="https://github.com/muhabee62/G.I.S-Analysis" class="button">View Project</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  &copy; 2026 Muhammad Bello Adamu &nbsp;·&nbsp; Analysis With Bello &nbsp;·&nbsp; All rights reserved
+</footer>
 
-						<h2>
-							<a href="https://github.com/muhabee62/Machine-Learning/blob/main/Recurrent%20Neural%20Networks%20(RNNs).py">
-								Reccurent Neural Network<br />
-								Model
-							</a>
-						</h2>
-					</header>
-					<a href="https://github.com/muhabee62/Machine-Learning/blob/main/Recurrent%20Neural%20Networks%20(RNNs).py" class="image fit"><img src="images/Sunspot.jpg" alt="" /></a>
-					<p>This is a simple RNN model trained on the sunspot dataset to make predictions.</p>
-					<ul class="actions special">
-						<li><a href="https://github.com/muhabee62/Machine-Learning/blob/main/Recurrent%20Neural%20Networks%20(RNNs).py" class="button">View Project</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
+<!-- ═══════ MODAL ═══════ -->
+<div class="modal-overlay" id="mOverlay"></div>
+<div class="modal" id="mPanel" role="dialog" aria-modal="true">
+  <div class="modal-topbar">
+    <div class="modal-breadcrumb">Projects / <span id="mBCTitle"></span></div>
+    <button class="modal-close-btn" id="mClose" aria-label="Close"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="modal-hero" id="mHero"></div>
+  <div class="modal-content">
+    <div class="modal-mtags" id="mTags"></div>
+    <h2 class="modal-title" id="mTitle"></h2>
+    <p class="modal-sec">Overview</p>
+    <p class="modal-overview" id="mDesc"></p>
+    <p class="modal-sec">Key Highlights</p>
+    <ul class="modal-highlights" id="mHL"></ul>
+    <p class="modal-sec">Tools &amp; Technologies</p>
+    <div class="modal-tech-row" id="mTech"></div>
+  </div>
+  <div class="modal-foot">
+    <a href="#" target="_blank" rel="noopener" class="gh-btn" id="mGH">
+      <i class="fab fa-github"></i>
+      <span>View Code on GitHub</span>
+      <i class="fas fa-external-link-alt"></i>
+    </a>
+  </div>
+</div>
 
-						<h2>
-							<a href="https://github.com/muhabee62/Data-Analysis/blob/main/Clustering.ipynb">
-								Data<br />
-								Clustering
-							</a>
-						</h2>
-					</header>
-					<a href="https://github.com/muhabee62/Data-Analysis/blob/main/Clustering.ipynb" class="image fit"><img src="images/clustering.jpg" alt="" /></a>
-					<p>This is an application of K-Means and Hierarchical clustering to a dataset and finding the optimum number of clusters.</p>
-					<ul class="actions special">
-						<li><a href="https://github.com/muhabee62/Data-Analysis/blob/main/Clustering.ipynb" class="button">View Project</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+/* ─── PROJECT DATA ─── */
+const PROJECTS = [
+  {
+    id:'mentorship',
+    featured: true,
+    filter:'other',
+    title:'Mentorship Connection Platform',
+    short:'A web platform that connects mentors and mentees, facilitating professional guidance and structured skill development.',
+    full:'The Mentorship Platform is a full-stack web application that bridges the gap between experienced professionals and those seeking guidance. Users can create profiles as mentors or mentees, browse available mentors by area of expertise, and establish mentorship connections. The platform was designed with a focus on usability — making the process of finding the right mentor as accessible and straightforward as possible.',
+    highlights:[
+      'Designed and built a full-stack web platform with distinct mentor and mentee user flows',
+      'Implemented user profile creation, expertise filtering, and connection management',
+      'Created a responsive interface accessible across desktop and mobile devices',
+      'Applied software development best practices including modular code and version control'
+    ],
+    tech:['Web Development','HTML / CSS','JavaScript','Full-Stack Development'],
+    tags:['Web Development'], tc:['t-dev'],
+    gh:'https://github.com/muhabee62/mentorship-platform',
+    grad:'linear-gradient(145deg,#001020 0%,#002038 55%,#00080f 100%)',
+    icon:'🤝'
+  },
+  {
+    id:'fault',
+    filter:'ai',
+    title:'AI-Powered Geological Fault Detection',
+    short:'A deep learning model that automatically identifies geological faults in seismic data — reducing manual analysis time and improving accuracy.',
+    full:'Geological fault detection is traditionally a time-intensive task performed manually by geologists analysing vast volumes of seismic data. This project proposes a deep learning solution that automates this process, training a neural network to recognise fault patterns in seismic imagery. The result is a faster, more consistent workflow that supports better decision-making in geological and oil & gas exploration.',
+    highlights:[
+      'Designed a deep learning architecture tailored for seismic fault pattern recognition',
+      'Processed and normalised large volumes of geophysical data for model training',
+      'Demonstrated how AI can significantly reduce manual analysis workload in earth sciences',
+      'Benchmarked model performance against traditional detection methods'
+    ],
+    tech:['Python','TensorFlow','Keras','NumPy','Matplotlib','Seismic Data Processing'],
+    tags:['AI','Machine Learning'], tc:['t-ai','t-ml'],
+    gh:'https://github.com/muhabee62/Machine-Learning',
+    grad:'linear-gradient(145deg,#12124a 0%,#2d1b69 55%,#0a0830 100%)',
+    icon:'🧠'
+  },
+  {
+    id:'agent',
+    filter:'ai',
+    title:'Intelligent Agent Simulation',
+    short:'An autonomous AI agent that perceives its environment, makes decisions, and navigates a 3D virtual world built in Unity.',
+    full:'This project implements an intelligent agent inside a Unity 3D environment. The agent is equipped with perception capabilities — it observes its surroundings, processes that information, and selects actions to achieve its goal. This models real-world autonomous systems like robots or self-driving vehicles, and demonstrates core principles of AI agent design including environment modelling, decision-making, and reward learning.',
+    highlights:[
+      'Built a functional AI agent that autonomously explores and responds to a virtual 3D environment',
+      'Implemented perception, decision logic, and action selection within Unity game engine',
+      'Applied core intelligent agent theory including environment states and goal-directed behaviour',
+      'Produced a simulation video demonstrating real-time agent performance'
+    ],
+    tech:['Unity','C#','AI Agent Design','Reinforcement Learning Concepts'],
+    tags:['AI','Simulation'], tc:['t-ai','t-ml'],
+    gh:'https://github.com/muhabee62/Intelligent-Agent',
+    grad:'linear-gradient(145deg,#0a2a1e 0%,#1a4a35 55%,#051410 100%)',
+    icon:'🤖'
+  },
+  {
+    id:'rnn',
+    filter:'ai',
+    title:'Sunspot Activity Forecasting (RNN)',
+    short:'A Recurrent Neural Network trained on decades of historical sunspot data to forecast future solar activity cycles.',
+    full:'Solar activity — measured through sunspot counts — follows cyclical patterns that affect satellite communications, power grids, and space weather. This project trains a Recurrent Neural Network (RNN) on a long historical sunspot dataset to learn these temporal patterns and make future forecasts. RNNs are uniquely suited for time-series prediction because they retain "memory" of previous inputs, enabling them to capture seasonal and cyclical dependencies.',
+    highlights:[
+      'Loaded and pre-processed a long-running historical solar cycle dataset',
+      'Designed and trained an RNN architecture to capture temporal dependencies',
+      'Visualised model predictions against real sunspot data with accuracy metrics',
+      'Explored how recurrent models handle cyclical and seasonal time-series patterns'
+    ],
+    tech:['Python','TensorFlow','Keras','Pandas','Matplotlib','Time-Series Analysis'],
+    tags:['Machine Learning','Deep Learning'], tc:['t-ml','t-ai'],
+    gh:'https://github.com/muhabee62/Machine-Learning',
+    grad:'linear-gradient(145deg,#2a1800 0%,#4a3000 55%,#150d00 100%)',
+    icon:'☀️'
+  },
+  {
+    id:'cnn',
+    filter:'ai',
+    title:'Flower Species Recognition (CNN)',
+    short:'A multi-class Convolutional Neural Network that identifies different flower species from photos with high classification accuracy.',
+    full:'Image classification is one of the most impactful applications of deep learning. This project builds a Convolutional Neural Network (CNN) that learns to distinguish between multiple flower species purely from their images. CNNs automatically learn visual features — colours, shapes, textures — making them ideal for this task. The model is evaluated on a held-out test set, and a companion prediction script allows classification of new unseen images.',
+    highlights:[
+      'Built a multi-class CNN from scratch using TensorFlow/Keras with data augmentation',
+      'Applied dropout and regularisation techniques to reduce overfitting',
+      'Achieved strong classification accuracy across multiple flower species categories',
+      'Paired with a separate prediction script for real-time image classification'
+    ],
+    tech:['Python','TensorFlow','Keras','Convolutional Neural Networks','Image Processing','Data Augmentation'],
+    tags:['Machine Learning','Computer Vision'], tc:['t-ml','t-cv'],
+    gh:'https://github.com/muhabee62/Machine-Learning',
+    grad:'linear-gradient(145deg,#200d3a 0%,#3a1f70 55%,#100525 100%)',
+    icon:'🌸'
+  },
+  {
+    id:'binary',
+    filter:'ai',
+    title:'Binary Classification Deep Neural Network',
+    short:'A Deep Neural Network designed for two-class prediction problems — making accurate yes/no decisions from structured tabular data.',
+    full:'Many real-world decisions are binary: fraud or legitimate? Malignant or benign? This project builds a Deep Neural Network specifically optimised for binary classification. It demonstrates key machine learning principles including network architecture design, loss functions for binary problems, training optimisation, and evaluation using standard classification metrics. The model is designed to generalise well to unseen data through careful regularisation.',
+    highlights:[
+      'Designed a DNN architecture with sigmoid output optimised for binary classification',
+      'Applied binary cross-entropy loss and Adam optimiser for efficient training',
+      'Evaluated model with accuracy, precision, recall, F1-score, and AUC-ROC',
+      'Demonstrated end-to-end workflow from raw tabular data to deployed model'
+    ],
+    tech:['Python','TensorFlow','Keras','Scikit-Learn','Pandas','NumPy'],
+    tags:['Machine Learning','Deep Learning'], tc:['t-ml','t-ai'],
+    gh:'https://github.com/muhabee62/Machine-Learning',
+    grad:'linear-gradient(145deg,#001828 0%,#003050 55%,#000c14 100%)',
+    icon:'⚡'
+  },
+  {
+    id:'gis-map',
+    filter:'gis',
+    title:'Cadastral Land Boundary Mapping (GIS)',
+    short:'Applied GIS tools to create precise land boundary maps for property registration and legal land administration.',
+    full:'Cadastral mapping is the process of accurately delineating and recording land parcels — essential for property rights, urban planning, and resource management. This project applies GIS tools to produce a cadastral map, processing spatial data layers to define clear, precise land boundaries. The output is a professional-grade geospatial product directly useful for land registration authorities and local governments working on land governance.',
+    highlights:[
+      'Collected and processed multi-layer geospatial datasets for the study area',
+      'Applied GIS tools to define, verify, and visualise precise land boundary demarcations',
+      'Produced a clean, publication-ready cadastral map with accurate spatial attribute data',
+      'Demonstrated the critical role of GIS in supporting legal land governance frameworks'
+    ],
+    tech:['GIS','ArcGIS / QGIS','Spatial Data Analysis','Cartography','Remote Sensing'],
+    tags:['GIS','Remote Sensing'], tc:['t-gis','t-res'],
+    gh:'https://github.com/muhabee62/G.I.S-Analysis',
+    grad:'linear-gradient(145deg,#0a2810 0%,#1e4a25 55%,#051308 100%)',
+    icon:'🗺️'
+  },
+  {
+    id:'gis-write',
+    filter:'gis',
+    title:'GIS Research &amp; Technical Writings',
+    short:'A collection of technical writings exploring geospatial analysis, remote sensing methodologies, and real-world GIS applications.',
+    full:'Beyond technical implementation, communicating geospatial findings clearly is a critical professional skill. This repository contains a series of technical writings exploring GIS methodologies, remote sensing workflows, and their applications in areas such as environmental monitoring, land use change detection, and urban analysis. The writings reflect both theoretical grounding and practical insight gained through fieldwork and academic research.',
+    highlights:[
+      'Covered topics including land use classification, change detection, and satellite imagery analysis',
+      'Explored applications of GIS in environmental monitoring and urban planning',
+      'Demonstrated the ability to communicate complex geospatial concepts to a wider audience',
+      'Includes methodological commentary and critical analysis of GIS project approaches'
+    ],
+    tech:['Remote Sensing','GIS Theory','Technical Writing','Spatial Analysis','Change Detection'],
+    tags:['GIS','Research'], tc:['t-gis','t-res'],
+    gh:'https://github.com/muhabee62/G.I.S-Writings',
+    grad:'linear-gradient(145deg,#102812 0%,#204a22 55%,#081510 100%)',
+    icon:'📡'
+  },
+  {
+    id:'cluster',
+    filter:'data',
+    title:'Customer Data Clustering Analysis',
+    short:'Applied K-Means and Hierarchical clustering to uncover hidden natural groupings and customer segments within complex datasets.',
+    full:'Clustering is an unsupervised machine learning technique that groups data points by similarity — without pre-defined labels. This project applies two popular clustering algorithms (K-Means and Hierarchical) to a dataset, determining the optimal number of clusters using the Elbow method and dendrogram analysis. The results reveal natural segments directly applicable to customer profiling, market research, and strategic business decision-making.',
+    highlights:[
+      'Applied K-Means clustering and identified the optimum K using the Elbow method',
+      'Performed Hierarchical Agglomerative Clustering with interpretable dendrogram visualisation',
+      'Compared the two clustering approaches and evaluated quality with silhouette scores',
+      'Produced clear visualisations of cluster boundaries and segment characteristics'
+    ],
+    tech:['Python','Scikit-Learn','Pandas','Matplotlib','Seaborn','K-Means','Hierarchical Clustering'],
+    tags:['Data Analysis','Machine Learning'], tc:['t-data','t-ml'],
+    gh:'https://github.com/muhabee62/Data-Analysis',
+    grad:'linear-gradient(145deg,#002828 0%,#004848 55%,#001313 100%)',
+    icon:'🔵'
+  },
+  {
+    id:'melanoma',
+    filter:'data',
+    title:'Melanoma (Skin Cancer) Risk Analysis in R',
+    short:'Statistical analysis of a clinical melanoma dataset using R, identifying key risk factors and producing clinically relevant insights.',
+    full:'Melanoma is one of the most aggressive forms of skin cancer. This project performs a rigorous statistical analysis of a clinical melanoma dataset using R — examining relationships between patient characteristics, tumour attributes, and survival outcomes. The analysis covers descriptive statistics, hypothesis testing, regression modelling, and survival analysis, producing insights that could inform clinical risk assessment and patient care decisions.',
+    highlights:[
+      'Performed thorough exploratory data analysis and cleaned the clinical dataset in R',
+      'Applied statistical tests (t-tests, chi-square) to identify significant risk factors',
+      'Built logistic regression and survival models to assess prognosis-linked variables',
+      'Produced clear visualisations and a well-structured R Markdown analytical report'
+    ],
+    tech:['R','R Markdown','ggplot2','dplyr','Survival Analysis','Statistical Inference'],
+    tags:['Data Analysis'], tc:['t-data'],
+    gh:'https://github.com/muhabee62/Data-Analysis',
+    grad:'linear-gradient(145deg,#280010 0%,#4a001e 55%,#130007 100%)',
+    icon:'🔬'
+  },
+  {
+    id:'classifiers',
+    filter:'data',
+    title:'Multi-Classifier Performance Comparison',
+    short:'A systematic comparison of four machine learning classifiers evaluated with confusion matrices and full performance metrics.',
+    full:'Choosing the right classifier for a problem requires understanding how different algorithms perform on the same data. This project is a structured comparison study where four classification algorithms are trained and tested on a unified dataset. Confusion matrices and evaluation metrics (accuracy, precision, recall, F1) are computed and compared, providing practical insight into classifier selection and the trade-offs between different algorithmic approaches.',
+    highlights:[
+      'Implemented and trained four classification algorithms on the same dataset',
+      'Generated and interpreted confusion matrices for each classifier independently',
+      'Computed accuracy, precision, recall, F1-score, and AUC for fair comparison',
+      'Presented a clear narrative on trade-offs between classifiers for this problem type'
+    ],
+    tech:['Python','Scikit-Learn','Pandas','Matplotlib','Seaborn','Confusion Matrix Analysis'],
+    tags:['Data Analysis','Machine Learning'], tc:['t-data','t-ml'],
+    gh:'https://github.com/muhabee62/Data-Analysis',
+    grad:'linear-gradient(145deg,#1e1500 0%,#3a2a00 55%,#0d0900 100%)',
+    icon:'📊'
+  },
+  {
+    id:'sentiment',
+    filter:'nlp',
+    title:'Sentiment Analysis &amp; Text Classification',
+    short:'Compared six machine learning algorithms on text sentiment classification — discovering which approach best understands human opinion.',
+    full:'Understanding sentiment in text — whether a review is positive, negative, or neutral — is one of the most commercially valuable applications of Natural Language Processing. This project evaluates six different classification algorithms on a sentiment dataset, applying thorough text preprocessing (tokenisation, stop-word removal, TF-IDF vectorisation) before training. The study provides a comprehensive comparison of which models handle language data most effectively and why.',
+    highlights:[
+      'Pre-processed raw text with tokenisation, stop-word removal, and TF-IDF vectorisation',
+      'Trained six classifiers (Naive Bayes, SVM, Logistic Regression, and more) on the same data',
+      'Evaluated all models with a full suite of metrics including macro-averaged F1-score',
+      'Produced comparative visualisations clearly communicating classifier performance differences'
+    ],
+    tech:['Python','Scikit-Learn','NLTK','TF-IDF Vectorisation','Pandas','Matplotlib'],
+    tags:['NLP','Data Analysis'], tc:['t-nlp','t-data'],
+    gh:'https://github.com/muhabee62/Data-Analysis',
+    grad:'linear-gradient(145deg,#281000 0%,#4a1e00 55%,#140800 100%)',
+    icon:'💬'
+  },
+  {
+    id:'apriori',
+    filter:'data',
+    title:'Market Basket Analysis (Apriori)',
+    short:'Discovered hidden purchasing patterns across three retail datasets using the Apriori association rule mining algorithm.',
+    full:'Market basket analysis reveals which products customers tend to buy together — a powerful insight for supermarkets, e-commerce platforms, and retail strategy. This project applies the Apriori algorithm to three real-world retail transaction datasets, extracting association rules with carefully tuned support and confidence thresholds. The findings provide actionable recommendations for product placement, promotional bundling, and cross-selling strategies.',
+    highlights:[
+      'Applied the Apriori algorithm across three distinct retail transaction datasets',
+      'Tuned support and confidence thresholds to surface meaningful, non-trivial associations',
+      'Visualised the most frequent itemsets and strongest rules for clear communication',
+      'Translated algorithmic outputs into practical retail strategy recommendations'
+    ],
+    tech:['Python','mlxtend','Pandas','Apriori Algorithm','Association Rule Mining'],
+    tags:['Data Analysis'], tc:['t-data'],
+    gh:'https://github.com/muhabee62/Data-Analysis',
+    grad:'linear-gradient(145deg,#001828 0%,#003050 55%,#000c14 100%)',
+    icon:'🛒'
+  },
+  {
+    id:'clean',
+    filter:'data',
+    title:'Data Cleaning &amp; Preprocessing Pipeline',
+    short:'A comprehensive data preparation pipeline showing best practices for transforming raw, messy data into analysis-ready format.',
+    full:'Good data science begins with good data. This project demonstrates a thorough data cleaning and preprocessing workflow — the often-overlooked but critically important step before any analysis or model training. It covers handling missing values, detecting and treating outliers, encoding categorical variables, feature scaling, and data quality checks, showing how raw messy data is methodically transformed into a clean, structured dataset ready for downstream use.',
+    highlights:[
+      'Identified and handled missing data using multiple imputation strategies',
+      'Detected and treated outliers using IQR and Z-score statistical methods',
+      'Applied one-hot and label encoding for categorical variables',
+      'Standardised and normalised numeric features for model-readiness'
+    ],
+    tech:['Python','Pandas','NumPy','Scikit-Learn','Matplotlib'],
+    tags:['Data Analysis'], tc:['t-data'],
+    gh:'https://github.com/muhabee62/Data-Analysis',
+    grad:'linear-gradient(145deg,#0a0a28 0%,#181845 55%,#050515 100%)',
+    icon:'🧹'
+  },
+  {
+    id:'pm',
+    filter:'other',
+    title:'UK e-Borders Project Management Case Study',
+    short:'An in-depth review of the UK Government\'s failed e-Borders programme, examining the critical project management failures that led to its collapse.',
+    full:'The UK e-Borders programme was a multi-billion pound government initiative to create a fully digital border control system. It was eventually cancelled after years of delays and massive cost overruns — making it one of the most studied failures in public sector IT project management. This report critically analyses the project using established PM frameworks, identifying key failures in scope management, stakeholder engagement, risk assessment, and governance.',
+    highlights:[
+      'Analysed the full lifecycle of the e-Borders programme using PM frameworks (PRINCE2, Agile)',
+      'Identified systemic failures in scope creep, vendor management, and risk mitigation',
+      'Applied lessons from the case study to derive best practices for complex IT programmes',
+      'Produced a professionally structured analytical report with clear, actionable recommendations'
+    ],
+    tech:['Project Management','PRINCE2','Risk Analysis','Stakeholder Management','Case Study Research'],
+    tags:['Project Management'], tc:['t-pm'],
+    gh:'https://github.com/muhabee62/Project-Management',
+    grad:'linear-gradient(145deg,#1a0a28 0%,#2e153e 55%,#0d0515 100%)',
+    icon:'📋'
+  },
+];
 
-						<h2>
-							<a href="https://github.com/muhabee62/Machine-Learning/blob/main/Convolutional%20Neural%20Networks%20(CNNs).py">
-								Convolutional Neural Network<br />
-								Model
-							</a>
-						</h2>
-					</header>
-					<a href="https://github.com/muhabee62/Machine-Learning/blob/main/Convolutional%20Neural%20Networks%20(CNNs).py" class="image fit"><img src="images/flower.jpg" alt="" /></a>
-					<p>This is a multi-class CNN model trained on a flower dataset.</p>
-					<ul class="actions special">
-						<li><a href="https://github.com/muhabee62/Machine-Learning/blob/main/Convolutional%20Neural%20Networks%20(CNNs).py" class="button">View Project</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
+/* ─── RENDER CARDS ─── */
+function renderCards(filter) {
+  const grid = document.getElementById('pGrid');
+  grid.innerHTML = '';
+  const list = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.filter === filter);
 
-						<h2>
-							<a href="https://github.com/muhabee62/Data-Analysis/blob/main/Classifiers.ipynb">
-								Data<br />
-								Classification
-							</a>
-						</h2>
-					</header>
-					<a href="https://github.com/muhabee62/Data-Analysis/blob/main/Classifiers.ipynb" class="image fit"><img src="images/classifier.jpg" alt="" /></a>
-					<p>This is an application of four classifiers to make prediction and calculating the confusion matrix and evaluation metrics.</p>
-					<ul class="actions special">
-						<li><a href="https://github.com/muhabee62/Data-Analysis/blob/main/Classifiers.ipynb" class="button">View Project</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
+  list.forEach((p, i) => {
+    const isFeat = p.featured && filter === 'all';
+    const div = document.createElement('div');
+    div.className = 'pcard rev' + (isFeat ? ' featured' : '');
 
-						<h2>
-							<a href="https://github.com/muhabee62/Data-Analysis/blob/main/7CS039%20Assessment.Rmd">
-								Data Analysis<br />
-								with R
-							</a>
-						</h2>
-					</header>
-					<a href="https://github.com/muhabee62/Data-Analysis/blob/main/7CS039%20Assessment.Rmd" class="image fit"><img src="images/melanoma.jpg" alt="" /></a>
-					<p>This is a statistical analysis on the melanoma (skin cancer) dataset.</p>
-					<ul class="actions special">
-						<li><a href="https://github.com/muhabee62/Data-Analysis/blob/main/7CS039%20Assessment.Rmd" class="button">View Project</a></li>
-					</ul>
-				</article>
-			</section>
+    const tagsHtml = p.tags.map((t, ti) =>
+      `<span class="ptag ${p.tc[ti]||'t-data'}">${t}</span>`).join('');
 
-			<!-- Add "Next page" button -->
-			<ul class="actions special">
-				<li><a href="page2.html" class="button large">Next page</a></li>
-			</ul>
+    div.innerHTML = `
+      <div class="pthumb" style="background:${p.grad}">
+        <span class="pthumb-icon">${p.icon}</span>
+      </div>
+      <div class="pbody">
+        ${isFeat ? '<div class="feat-badge">Featured Project</div>' : ''}
+        <div class="ptags">${tagsHtml}</div>
+        <h3 class="ptitle">${p.title}</h3>
+        <p class="pdesc">${p.short}</p>
+      </div>
+      <div class="pfoot">
+        <span class="pmore">Read More <span class="parrow">→</span></span>
+      </div>`;
 
-			<!-- Footer -->
-			<footer id="footer">
-				<section>
-					<form id="contactForm" method="post" action="#">
-						<div class="fields">
-							<div class="field">
-								<label for="name">Name</label>
-								<input type="text" name="name" id="name" />
-							</div>
-							<div class="field">
-								<label for="email">Email</label>
-								<input type="text" name="email" id="email" />
-							</div>
-							<div class="field">
-								<label for="message">Message</label>
-								<textarea name="message" id="message" rows="3"></textarea>
-							</div>
-						</div>
-						<ul class="actions">
-							<li><input type="submit" value="Send Message" /></li>
-						</ul>
-					</form>
-				</section>
-				<section class="split contact">
-					<section class="alt">
-						<h3>Address</h3>
-						<p>
-							Wolverhampton<br />
-							West Midlands
-						</p>
-					</section>
-					<section>
-						<h3>Phone</h3>
-						<p><a href="https://www.linkedin.com/in/muhammad-bello-adamu-b3574b238">(+44) 7476 377531</a></p>
-					</section>
-					<section>
-						<h3>Email</h3>
-						<p><a href="mailto:muhammadbello62@gmail.com">muhammadbello62@gmail.com</a></p>
-					</section>
-					<section>
-						<h3>Social</h3>
-						<ul class="icons alt">
-							<li><a href="https://www.linkedin.com/in/muhammad-bello-adamu-b3574b238" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/muhabee62" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</section>
-				</section>
-			</footer>
+    div.addEventListener('click', () => openModal(p));
+    grid.appendChild(div);
+    requestAnimationFrame(() => setTimeout(() => div.classList.add('vis'), 40 + i * 60));
+  });
+}
 
-			<script>
-				document.getElementById("contactForm").addEventListener("submit", function (event) {
-					event.preventDefault(); // Prevent the form from submitting normally
+/* ─── FILTER BUTTONS ─── */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderCards(btn.dataset.f);
+  });
+});
 
-					// Get the message, name, and email from the form fields
-					var message = document.getElementById("message").value;
-					var name = document.getElementById("name").value;
-					var email = document.getElementById("email").value;
+/* ─── MODAL ─── */
+function openModal(p) {
+  document.getElementById('mBCTitle').textContent = p.title.replace(/&amp;/g,'&');
+  document.getElementById('mTitle').innerHTML = p.title;
+  document.getElementById('mDesc').textContent = p.full;
 
-					// Construct the mailto link with the recipient email address, subject, and body
-					var mailtoLink = "mailto:muhabee62@gmail.com?subject=Message from " + encodeURIComponent(name) + " (" + encodeURIComponent(email) + ")&body=" + encodeURIComponent(message);
+  const hero = document.getElementById('mHero');
+  hero.style.background = p.grad;
+  hero.innerHTML = `<span class="modal-hero-icon">${p.icon}</span>`;
 
-					// Open the default email client with the mailto link
-					window.location.href = mailtoLink;
-				});
-			</script>
+  document.getElementById('mTags').innerHTML =
+    p.tags.map((t,ti) => `<span class="ptag ${p.tc[ti]||'t-data'}">${t}</span>`).join('');
 
-			<!-- Copyright -->
-			<div id="copyright">
-				<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-			</div>
+  document.getElementById('mHL').innerHTML =
+    p.highlights.map(h => `<li>${h}</li>`).join('');
 
-		</div>
+  document.getElementById('mTech').innerHTML =
+    p.tech.map(t => `<span class="tech-chip">${t}</span>`).join('');
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+  document.getElementById('mGH').href = p.gh;
 
+  document.getElementById('mOverlay').classList.add('open');
+  document.getElementById('mPanel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('mOverlay').classList.remove('open');
+  document.getElementById('mPanel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('mClose').addEventListener('click', closeModal);
+document.getElementById('mOverlay').addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ─── SCROLL REVEAL ─── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+/* ─── CONTACT FORM ─── */
+document.getElementById('cform').addEventListener('submit', e => {
+  e.preventDefault();
+  const n = document.getElementById('cname').value;
+  const em = document.getElementById('cemail').value;
+  const msg = document.getElementById('cmsg').value;
+  window.location.href = `mailto:muhammadbello62@gmail.com?subject=${encodeURIComponent('Message from ' + n + ' (' + em + ')')}&body=${encodeURIComponent(msg)}`;
+});
+
+/* ─── INIT ─── */
+renderCards('all');
+</script>
 </body>
 </html>
