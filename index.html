@@ -269,12 +269,13 @@
     ═══════════════════════════════════════ */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 1.4rem;
     }
 
-    /* Project Card */
+    /* Project Card — 3 per row on the 6-column grid */
     .pcard {
+      grid-column: span 2;
       display: flex; flex-direction: column;
       background: var(--glass); border: 1px solid var(--glass-bd);
       border-radius: var(--r); overflow: hidden;
@@ -289,12 +290,26 @@
       box-shadow: 0 22px 55px rgba(0,0,0,0.45), 0 0 0 1px rgba(79,195,247,0.09);
     }
 
-    /* Featured card spans full width */
-    .pcard.featured { grid-column: 1 / -1; flex-direction: row; }
-    .pcard.featured .pthumb { width: 340px; min-width: 340px; height: auto; }
-    .pcard.featured .pbody { padding: 2.2rem 2.6rem; }
+    /* Featured card spans full width: thumb left, copy + footer stacked right */
+    .pcard.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      grid-template-rows: 1fr auto;
+    }
+    .pcard.featured .pthumb {
+      grid-row: 1 / span 2;
+      width: 100%; min-width: 0; height: auto; min-height: 240px;
+    }
+    .pcard.featured .pbody { padding: 2.2rem 2.6rem 1.2rem; }
+    .pcard.featured .pfoot { grid-column: 2; }
     .pcard.featured .ptitle { font-size: 1.75rem; }
     .pcard.featured .pdesc { font-size: 0.95rem; }
+
+    /* Spotlight pair: two tiles in the row under featured */
+    .pcard.spotlight { grid-column: span 3; }
+    .pcard.spotlight .pthumb { height: 190px; }
+    .pcard.spotlight .ptitle { font-size: 1.42rem; }
 
     .pthumb {
       height: 175px; position: relative; overflow: hidden;
@@ -317,6 +332,12 @@
       display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;
     }
     .feat-badge::before { content: ''; display: block; width: 18px; height: 1px; background: var(--blue); }
+    .spot-badge {
+      font-family: var(--ff-mono); font-size: 0.65rem; color: var(--teal);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;
+    }
+    .spot-badge::before { content: ''; display: block; width: 18px; height: 1px; background: var(--teal); }
 
     .ptags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
     .ptag {
@@ -438,7 +459,9 @@
       padding: 1.4rem 2.4rem;
       border-top: 1px solid var(--glass-bd);
       position: sticky; bottom: 0; background: #0c1020;
+      display: flex; flex-direction: column; gap: 0.7rem;
     }
+    .modal-foot:empty { display: none; }
     .gh-btn {
       display: flex; align-items: center; justify-content: center; gap: 0.8rem;
       padding: 0.92rem 2rem; width: 100%;
@@ -451,7 +474,14 @@
       background: rgba(79,195,247,0.07); border-color: var(--blue); color: var(--blue);
       transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
+    .gh-btn.live {
+      background: rgba(79,195,247,0.12); border-color: rgba(79,195,247,0.35); color: var(--blue);
+    }
+    .gh-btn.live:hover {
+      background: rgba(0,229,209,0.12); border-color: var(--teal); color: var(--teal);
+    }
     .gh-btn .fa-external-link-alt { font-size: 0.72rem; margin-left: auto; }
+    .gh-btn.hidden { display: none; }
 
     /* ═══════════════════════════════════════
        CONTACT
@@ -519,14 +549,22 @@
       .nav-links { display: none; }
       .section-wrap { padding: 5rem 2rem; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .pcard.featured { flex-direction: column; }
-      .pcard.featured .pthumb { width: 100%; height: 175px; min-width: unset; }
+      .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pcard, .pcard.spotlight { grid-column: span 1; }
+      .pcard.featured {
+        grid-column: 1 / -1;
+        display: flex; flex-direction: column;
+      }
+      .pcard.featured .pthumb { width: 100%; height: 175px; min-width: unset; min-height: unset; grid-row: auto; }
+      .pcard.featured .pfoot { grid-column: auto; }
     }
     @media (max-width: 600px) {
       .form-row { grid-template-columns: 1fr; }
       .modal { width: 100vw; }
       .hero-btns { flex-direction: column; align-items: center; }
       .clinks { flex-direction: column; align-items: center; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .pcard, .pcard.spotlight, .pcard.featured { grid-column: 1 / -1; }
     }
   </style>
 </head>
@@ -588,7 +626,7 @@
     </div>
     <div class="about-stats rev" style="transition-delay:0.15s">
       <div class="stat-card">
-        <div class="stat-num">14+</div>
+        <div class="stat-num">16+</div>
         <div class="stat-lbl">Projects Completed</div>
       </div>
       <div class="stat-card">
@@ -611,6 +649,9 @@
 <div class="section-wrap" style="padding-top:0" id="skills">
   <p class="section-label rev">Technical Stack</p>
   <div class="skills-cloud rev" style="transition-delay:0.1s">
+    <span class="skill-pill"><i class="fab fa-microsoft"></i> Azure</span>
+    <span class="skill-pill"><i class="fab fa-react"></i> React / TypeScript</span>
+    <span class="skill-pill"><i class="fas fa-code"></i> C# / Azure Functions</span>
     <span class="skill-pill"><i class="fab fa-python"></i> Python</span>
     <span class="skill-pill"><i class="fas fa-brain"></i> TensorFlow / Keras</span>
     <span class="skill-pill"><i class="fas fa-chart-scatter"></i> Scikit-Learn</span>
@@ -623,6 +664,8 @@
     <span class="skill-pill"><i class="fas fa-comment-dots"></i> NLP</span>
     <span class="skill-pill"><i class="fas fa-cube"></i> Unity</span>
     <span class="skill-pill"><i class="fas fa-tasks"></i> Project Management</span>
+    <span class="skill-pill"><i class="fas fa-database"></i> Azure SQL</span>
+    <span class="skill-pill"><i class="fas fa-chart-bar"></i> Power BI</span>
     <span class="skill-pill"><i class="fab fa-js"></i> HTML / CSS / JS</span>
   </div>
 </div>
@@ -704,8 +747,13 @@
     <p class="modal-sec">Tools &amp; Technologies</p>
     <div class="modal-tech-row" id="mTech"></div>
   </div>
-  <div class="modal-foot">
-    <a href="#" target="_blank" rel="noopener" class="gh-btn" id="mGH">
+  <div class="modal-foot" id="mFoot">
+    <a href="#" target="_blank" rel="noopener" class="gh-btn live hidden" id="mLive">
+      <i class="fas fa-arrow-up-right-from-square"></i>
+      <span>Visit live site</span>
+      <i class="fas fa-external-link-alt"></i>
+    </a>
+    <a href="#" target="_blank" rel="noopener" class="gh-btn hidden" id="mGH">
       <i class="fab fa-github"></i>
       <span>View Code on GitHub</span>
       <i class="fas fa-external-link-alt"></i>
@@ -720,23 +768,63 @@
 /* ─── PROJECT DATA ─── */
 const PROJECTS = [
   {
-    id:'mentorship',
+    id:'mentorbridge',
     featured: true,
     filter:'other',
-    title:'Mentorship Connection Platform',
-    short:'A web platform that connects mentors and mentees, facilitating professional guidance and structured skill development.',
-    full:'The Mentorship Platform is a full-stack web application that bridges the gap between experienced professionals and those seeking guidance. Users can create profiles as mentors or mentees, browse available mentors by area of expertise, and establish mentorship connections. The platform was designed with a focus on usability — making the process of finding the right mentor as accessible and straightforward as possible.',
+    title:'MentorBridge',
+    short:'A live Azure mentorship platform for schools and organisations — matching, sessions, goals and org chat, with every school kept in its own space.',
+    full:'MentorBridge is a full-stack mentorship product for schools and organisations that want structured matching, sessions and measurable progress. Mentors and mentees match inside their own school, meet in a live video room, keep notes in chat, and track goals in one place. The product is live as an MVP: React and TypeScript on Azure Static Web Apps, C# Azure Functions, Azure SQL, and Microsoft Entra External ID for sign-in and roles. Organisation isolation, invite codes, a school-trial path, role-based dashboards and analytics are in place. Still an MVP — not a scaled production platform.',
     highlights:[
-      'Designed and built a full-stack web platform with distinct mentor and mentee user flows',
-      'Implemented user profile creation, expertise filtering, and connection management',
-      'Created a responsive interface accessible across desktop and mobile devices',
-      'Applied software development best practices including modular code and version control'
+      'Shipped a live Azure MVP used for school trials: matching, sessions, goals and progress in one place',
+      'Isolated each school so mentors and mentees only see their own organisation',
+      'Added org chat, a live video room, invite codes, and a school-trial path for staff and students',
+      'Built role-based dashboards for platform admin, organisation admin, mentor and mentee on Entra External ID'
     ],
-    tech:['Web Development','HTML / CSS','JavaScript','Full-Stack Development'],
+    tech:['React','TypeScript','C# Azure Functions','Azure SQL','Microsoft Entra External ID','Azure Static Web Apps'],
     tags:['Web Development'], tc:['t-dev'],
     gh:'https://github.com/muhabee62/mentorship-platform',
+    live:'https://www.mentorbridge.co.uk',
     grad:'linear-gradient(145deg,#001020 0%,#002038 55%,#00080f 100%)',
     icon:'🤝'
+  },
+  {
+    id:'businessdoor',
+    spotlight: true,
+    filter:'ai',
+    title:'BusinessDoor',
+    short:'An AI front door for UK businesses — one agent on website, email and WhatsApp, configured from a customer console on Microsoft Azure. Product in development.',
+    full:'BusinessDoor is the AI front door Bello is building for UK SMEs. One agent answers on the channels a business already uses — website chat, email and WhatsApp. Phone is planned, not in the offer yet. Each business gets a console to choose services, see the price, set hours, brand voice and knowledge before anything goes live. Built on Microsoft Azure: Azure Communication Services, Azure AI Foundry, Microsoft Entra External ID, Microsoft Graph, Azure Functions, Azure Static Web Apps and Azure SQL. Product in development — not generally available.',
+    highlights:[
+      'Designed a customer console where each business configures channels, pricing, hours and knowledge before go-live',
+      'One agent across website chat, email and WhatsApp, with handover to staff when a thread needs a person',
+      'Azure identity, communications, Functions, Static Web Apps and SQL — UK data residency on one stack',
+      'Founder-built product in development, not a scaled live customer platform'
+    ],
+    tech:['Azure Communication Services','Azure AI Foundry','Microsoft Entra External ID','Microsoft Graph','Azure Functions','Azure Static Web Apps','Azure SQL'],
+    tags:['AI','Web Development'], tc:['t-ai','t-dev'],
+    live:'https://www.businessdoor.co.uk',
+    spotLabel:'Product',
+    grad:'linear-gradient(145deg,#0a1a28 0%,#12344a 55%,#061018 100%)',
+    icon:'🚪'
+  },
+  {
+    id:'uninexus',
+    spotlight: true,
+    filter:'data',
+    title:'UniNexus',
+    short:'A UK education project on student retention and employability — analytical workflows, reporting and CI/CD that turn data into decisions staff can act on.',
+    full:'UniNexus is a UK education project focused on student retention and employability. The work covers end-to-end analytical workflows: exploratory analysis on structured and semi-structured data, Python preprocessing and validation, Power BI reporting, model evaluation, and documented findings. Pipelines and CI/CD keep the reporting path repeatable so education teams can act on retention and employability signals rather than a one-off spreadsheet.',
+    highlights:[
+      'Built end-to-end analytical workflows for student retention and employability',
+      'Cleaned and validated structured and semi-structured data in Python',
+      'Produced Power BI reporting and documented model-evaluation findings',
+      'Automated data and reporting paths with CI/CD so the work stays repeatable'
+    ],
+    tech:['Python','Pandas','EDA','Power BI','CI/CD','Data Pipelines'],
+    tags:['Data Analysis'], tc:['t-data'],
+    spotLabel:'Education',
+    grad:'linear-gradient(145deg,#101828 0%,#1a3050 55%,#080e18 100%)',
+    icon:'🎓'
   },
   {
     id:'fault',
@@ -1000,18 +1088,23 @@ function renderCards(filter) {
 
   list.forEach((p, i) => {
     const isFeat = p.featured && filter === 'all';
+    const isSpot = p.spotlight && filter === 'all';
     const div = document.createElement('div');
-    div.className = 'pcard rev' + (isFeat ? ' featured' : '');
+    div.className = 'pcard rev' + (isFeat ? ' featured' : '') + (isSpot ? ' spotlight' : '');
 
     const tagsHtml = p.tags.map((t, ti) =>
       `<span class="ptag ${p.tc[ti]||'t-data'}">${t}</span>`).join('');
+
+    const badge = isFeat
+      ? '<div class="feat-badge">Featured Project</div>'
+      : (isSpot ? `<div class="spot-badge">${p.spotLabel || 'Project'}</div>` : '');
 
     div.innerHTML = `
       <div class="pthumb" style="background:${p.grad}">
         <span class="pthumb-icon">${p.icon}</span>
       </div>
       <div class="pbody">
-        ${isFeat ? '<div class="feat-badge">Featured Project</div>' : ''}
+        ${badge}
         <div class="ptags">${tagsHtml}</div>
         <h3 class="ptitle">${p.title}</h3>
         <p class="pdesc">${p.short}</p>
@@ -1054,7 +1147,25 @@ function openModal(p) {
   document.getElementById('mTech').innerHTML =
     p.tech.map(t => `<span class="tech-chip">${t}</span>`).join('');
 
-  document.getElementById('mGH').href = p.gh;
+  const liveBtn = document.getElementById('mLive');
+  if (p.live) {
+    liveBtn.href = p.live;
+    liveBtn.classList.remove('hidden');
+  } else {
+    liveBtn.removeAttribute('href');
+    liveBtn.classList.add('hidden');
+  }
+
+  const ghBtn = document.getElementById('mGH');
+  if (p.gh) {
+    ghBtn.href = p.gh;
+    ghBtn.classList.remove('hidden');
+  } else {
+    ghBtn.removeAttribute('href');
+    ghBtn.classList.add('hidden');
+  }
+
+  document.getElementById('mFoot').style.display = (p.live || p.gh) ? 'flex' : 'none';
 
   document.getElementById('mOverlay').classList.add('open');
   document.getElementById('mPanel').classList.add('open');
